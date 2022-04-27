@@ -1,5 +1,6 @@
 # Project exclude paths
 /bin/
+/out/
 .settings
 .idea
 .classpath
