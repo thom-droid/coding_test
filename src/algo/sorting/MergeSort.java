@@ -1,28 +1,17 @@
 package algo.sorting;
 
+import java.util.Arrays;
+
 public class MergeSort {
 
-    public static void main(String[] args) {
+    private static final int[] data = {1,5,4,6,2,3,7,9,8};
+    public static void merge(int[] arr, int p, int q, int r) {
+        int i = p;
+        int j = q + 1;
+        int k = p;
+        int[] tmp = new int[arr.length];
 
-    }
-
-    public static void mergeSort(int[] arr, int start, int end){
-
-        if(start < end){
-            int middle = (start + end) / 2;
-            mergeSort(arr, start, middle); // 전반부
-            mergeSort(arr, middle + 1, end); // 후반부
-
-        }
-    }
-
-    public static void merge(int[] arr, int start, int middle, int end) {
-        int i = start;
-        int j = middle + 1;
-        int k = start;
-        int tmp[] = new int[arr.length];
-
-        while (i <= middle && j <= end) {
+        while (i <= q && j <= r) {
 
             if (arr[i] <= arr[j]) {
                 tmp[k++] = arr[i++];
@@ -31,19 +20,38 @@ public class MergeSort {
             }
         }
 
-        while (i <= middle) { // j 쪽의 작은 값들이 다 선택되어서 없을 때. i 쪽 배열에만 값이 남았을 때.
+        while (i <= q) { // j 쪽의 작은 값들이 다 선택되어서 없을 때. i 쪽 배열에만 값이 남았을 때.
             tmp[k++] = arr[i++];
         }
 
-        while (j <= end) {
+        while (j <= r) {
             tmp[k++] = arr[j++];
         }
 
-        for(int r = 0; r < tmp.length; r++){ // 저장해놓은 값을 원래 배열에 돌려놓음
-            arr[r] = tmp[r];
+        for(int l = p; l <= r; l++){ // 저장해놓은 값을 원래 배열에 돌려놓음
+            arr[l] = tmp[l];
         }
 
 
+    }
+
+    public static void mergeSort(int[] arr, int p, int r){
+
+        if(p < r){
+            int q = (p + r) / 2;
+            mergeSort(arr, p, q); // align the prior parts
+            mergeSort(arr, q + 1, r); // then the latter parts
+            merge(arr, p, q, r); // then merge into one
+        }
+    }
+
+    public static void print(){
+        mergeSort(data, 0, data.length - 1);
+        System.out.println(Arrays.toString(data));
+    }
+
+    public static void main(String[] args) {
+        print();
     }
 
 }
