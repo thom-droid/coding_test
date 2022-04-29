@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class QuickSort {
 
-    public static int[] ARRAY = {1,5,4,8,7,2,3,9,6};
-    public static final int SIZE = ARRAY.length;
+    private static int[] ARRAY = {1,5,4,8,7,2,3,9,6};
+    private static final int SIZE = ARRAY.length;
 
-    public static void quickSort(int[] arr, int begin, int end) {
+    private static void quickSort(int[] arr, int begin, int end) {
 
         if (begin < end) {
             int pivot = partition(arr, begin, end);
@@ -24,16 +24,19 @@ public class QuickSort {
         for (int j = begin; j <= end - 1; j++) {
 
             if (arr[j] <= pivot) {
-                int tmp = arr[j];
-                arr[j] = arr[++i];
-                arr[i] = tmp;
+                i = exchangeValuesAndReturnIndex(arr, j, i);
             }
         }
 
+        i = exchangeValuesAndReturnIndex(arr, end, i);
+
+        return i;
+    }
+
+    private static int exchangeValuesAndReturnIndex(int[] arr, int end, int i) {
         int tmp = arr[end];
         arr[end] = arr[++i];
         arr[i] = tmp;
-
         return i;
     }
 
