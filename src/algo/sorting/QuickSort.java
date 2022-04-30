@@ -33,11 +33,11 @@ public class QuickSort {
         return i;
     }
 
-    private static int exchangeValuesAndReturnIndex(int[] arr, int end, int i) {
-        int tmp = arr[end];
-        arr[end] = arr[++i];
-        arr[i] = tmp;
-        return i;
+    private static int exchangeValuesAndReturnIndex(int[] arr, int index1, int index2) {
+        int tmp = arr[index1];
+        arr[index1] = arr[++index2];
+        arr[index2] = tmp;
+        return index2;
     }
 
     public static void sortAndPrint() {
