@@ -4,53 +4,65 @@ import java.util.Arrays;
 
 public class HeapSort {
 
-    private static final Integer[] DATA = {0,4,1,3,2,16,9,10,14,8,7};
+    private static final Integer[] DATA = {4,1,3,2,16,9,10,14,8,7};
     private static final int SIZE = DATA.length;
-    private static void heapify(Integer[] data, int i) {
 
-        Integer nodeToCompare = data[i];
+    private static void heapSort() {
+        for (int i = SIZE - 1; i >= 0; i--) {
+            int tmp = DATA[0];
+            DATA[0] = DATA[i];
+            DATA[i] = tmp;
+            maxHeapify(DATA, i,0);
+        }
+
+    }
+    private static void buildMaxHeap() {
+        int startNode = SIZE / 2;
+        for (int i = startNode; i >= 0; i--) {
+            maxHeapify(DATA, SIZE, i);
+        }
+    }
+
+    private static void maxHeapify(Integer[] data, int arrayLength, int parentIndex) {
+
+        Integer parentNode = data[parentIndex];
         Integer biggestChildNode;
-        int index = 0;
+        int biggestChildIndex = 0;
 
-        // 번지 크기랑 대조하는 코드 하나 필요
-        if (data[2 * i] == null) {
+        if (!hasLeftChildNode(parentIndex, arrayLength)) {
             return;
         }
 
-        biggestChildNode = data[2 * i];
+        biggestChildNode = data[2 * parentIndex + 1];
+        biggestChildIndex = 2 * parentIndex + 1;
 
-        if (data[2 * i + 1] != null) {
-
-            if (data[2 * i] > data[2 * i + 1]) {
-                index = 2 * i;
-                biggestChildNode = data[2 * i];
-            } else {
-                index = 2 * i + 1;
-                biggestChildNode = data[2 * i + 1];
-            }
-
+        if (hasRightChildNode(parentIndex, arrayLength) &&
+                data[2 * parentIndex + 1] < data[2 * parentIndex + 2]) {
+            biggestChildIndex = 2 * parentIndex + 2;
+            biggestChildNode = data[2 * parentIndex + 2];
         }
 
-        if (nodeToCompare >= biggestChildNode) {
+        if (parentNode >= biggestChildNode) {
             return;
         }
 
-        data[index] = nodeToCompare;
-        data[i] = biggestChildNode;
+        data[biggestChildIndex] = parentNode;
+        data[parentIndex] = biggestChildNode;
 
-        heapify(data, index);
+        maxHeapify(data, arrayLength, biggestChildIndex);
 
     }
 
-    private static void maxHeapify() {
-        int startNode = DATA[SIZE-1] / 2;
-        for (int i = startNode; i >= 2; i--) {
-            heapify(DATA, i);
-        }
+    private static boolean hasLeftChildNode(int index, int arrayLength) {
+        return index * 2 + 1 < arrayLength;
+    }
+    private static boolean hasRightChildNode(int index, int arrayLength) {
+        return index * 2 + 2 < arrayLength;
     }
 
     public static void main(String[] args) {
-        maxHeapify();
+        buildMaxHeap();
+        heapSort();
         System.out.println(Arrays.toString(DATA));
     }
 }
