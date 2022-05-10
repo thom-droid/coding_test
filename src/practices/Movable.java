@@ -1,4 +1,4 @@
-package test;
+package practices;
 
 public interface Movable {
     int move();

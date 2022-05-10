@@ -1,4 +1,4 @@
-package test.programming;
+package practices.programming;
 
 import java.util.*;
 import java.util.stream.Collectors;

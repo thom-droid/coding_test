@@ -1,7 +1,6 @@
-package test.programming;
+package practices.programming;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Notification {
     public static void main(String[] args) {

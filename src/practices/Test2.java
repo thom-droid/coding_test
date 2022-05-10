@@ -1,4 +1,4 @@
-package test;
+package practices;
 
 class Person{
     int no = 10;

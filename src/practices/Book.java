@@ -1,4 +1,4 @@
-package test;
+package practices;
 
 class Book{
     static int cnt ;

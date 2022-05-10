@@ -1,4 +1,4 @@
-package test;
+package practices;
 
 class Card{
     int data;

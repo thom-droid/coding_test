@@ -1,4 +1,4 @@
-package test.programming;
+package practices.programming;
 
 import java.util.Arrays;
 import java.util.HashMap;

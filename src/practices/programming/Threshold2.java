@@ -1,4 +1,4 @@
-package test.programming;
+package practices.programming;
 
 public class Threshold2 {
 
