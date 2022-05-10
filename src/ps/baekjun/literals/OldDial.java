@@ -58,6 +58,7 @@ public class OldDial {
             sum += dials[i][0] * dials[i][1];
         }
 
+        // 그리고 출력한다.
         System.out.println(sum);
 
 
