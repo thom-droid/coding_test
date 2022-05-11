@@ -23,7 +23,11 @@ public class CountingSort {
         }
     }
 
-    public static int[] countingSort(int[] data, int[] countingArray) {
+    public static int[] countingSortAndReturnResult(int[] data, int k) {
+
+        int[] countingArray = buildCountingArray(data, k);
+
+        arrangeWithAccumulation(countingArray);
 
         int[] sortedArray = new int[data.length];
 
@@ -38,9 +42,7 @@ public class CountingSort {
     private static int[] data = {2,5,3,0,2,3,0,3};
 
     public static void main(String[] args) {
-        int[] countingArray = buildCountingArray(data, 5);
-        arrangeWithAccumulation(countingArray);
-        int[] result = countingSort(data, countingArray);
+        int[] result = countingSortAndReturnResult(data, 5);
         System.out.println(Arrays.toString(result));
     }
 }
