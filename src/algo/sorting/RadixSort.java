@@ -17,21 +17,21 @@ public class RadixSort {
         return maxValue;
     }
 
-    // dividing datum by exponent will achieve the number in digit.
-    // if the value of exponent equals to 100, for example,
-    // and the largest number in data is 123, then 3 will be returned
-    // which means we are looping in the smallest digit.
+    // modulo operating datum followed by division will achieve the number in digit.
+    // if the value of exponent equals to 1, for example,
+    // and the number to be operated is 123, then 3 will be returned
+    // from equation (123 / 1) % 10 which means we are looping in the smallest digit.
     private static void countingSort(int[] data, int k, int exponent) {
 
         int[] countingArray = new int[k + 1];
 
 
-        //initialize data
+        // initialize count array
         for (int datum : data) {
             countingArray[(datum / exponent) % 10]++;
         }
 
-        //accumulating
+        // rearrange by accumulating
         for (int i = 1; i < countingArray.length; i++) {
             countingArray[i] += countingArray[i-1];
         }
@@ -42,6 +42,7 @@ public class RadixSort {
             resultArray[index - 1] = data[i];
         }
 
+        // copy result to the original one
         System.arraycopy(resultArray, 0, data, 0, resultArray.length);
     }
 
