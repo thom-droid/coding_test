@@ -16,13 +16,13 @@ public class Sort11652 {
                 .max(comparator)
                 .get().getKey();
     }
-
     private static Comparator<Map.Entry<Long, Integer>> comparator = (o1, o2) -> {
         if(o1.getValue().intValue() ==(o2.getValue()).intValue()){
             return  Long.compare(o2.getKey().longValue(), o1.getKey().longValue());
         }
         return o1.getValue().intValue() - o2.getValue().intValue();
     };
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -42,5 +42,6 @@ public class Sort11652 {
         }
 
         System.out.println(getLargestNumber(map));
+
     }
 }
