@@ -1,6 +1,11 @@
 package ps.baekjun.graph;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 //Silver 1
 public class Graph2178 {
@@ -14,12 +19,19 @@ public class Graph2178 {
     private static final int COLUMN = 6;
 
     private static int[][] graph = {
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 1, 0, 1, 1, 1, 1},
-            {0, 1, 0, 1, 0, 1, 0},
-            {0, 1, 0, 1, 0, 1, 1},
-            {0, 1, 1, 1, 0, 1, 1}
+//            {0, 0, 0, 0, 0, 0, 0},
+//            {0, 1, 0, 1, 1, 1, 1},
+//            {0, 1, 0, 1, 0, 1, 0},
+//            {0, 1, 0, 1, 0, 1, 1},
+//            {0, 1, 1, 1, 0, 1, 1}
+            {0,0,0,0,0,0,0},
+            {0,1,1,0,1,1,0},
+            {0,1,1,0,1,1,0},
+            {0,1,1,1,1,1,1},
+            {0,1,1,1,1,0,1}
     };
+
+
 
     public static boolean findPath(int row, int col, int length) {
 
@@ -55,9 +67,15 @@ public class Graph2178 {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         findPath(1, 1, 0);
         System.out.println(Arrays.deepToString(graph));
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int row = Integer.parseInt(br.readLine());
+        int col = Integer.parseInt(br.readLine());
+
+        int[][] graph = new int[row + 1][col + 1];
     }
 
 }
