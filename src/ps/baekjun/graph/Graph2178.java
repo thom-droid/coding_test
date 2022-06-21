@@ -33,10 +33,12 @@ public class Graph2178 {
 
 
 
-    public static boolean findPath(int row, int col, int length) {
+    public static boolean findPath(int row, int col, int length, int[][] graph) {
 
+        int R = graph.length - 1;
+        int C = graph[0].length - 1;
         // graph 밖인 경우
-        if (row > ROW || col > COLUMN || row <= 0 || col <= 0) {
+        if (row > R || col > C || row <= 0 || col <= 0) {
             return false;
         }
 
@@ -51,7 +53,7 @@ public class Graph2178 {
         }
 
         // 목적지라면 리턴
-        if (row == ROW && col == COLUMN) {
+        if (row == R && col == C) {
             length++;
             graph[row][col] = length;
             return true;
@@ -61,21 +63,36 @@ public class Graph2178 {
 
         graph[row][col] = length;
 
-        return findPath(row, col + 1, length) || findPath(row + 1, col, length)
-                || findPath(row, col - 1, length) || findPath(row - 1, col, length);
+        return findPath(row, col + 1, length, graph) || findPath(row + 1, col, length, graph)
+                || findPath(row, col - 1, length, graph) || findPath(row - 1, col, length, graph);
 
 
     }
 
     public static void main(String[] args) throws IOException {
-        findPath(1, 1, 0);
-        System.out.println(Arrays.deepToString(graph));
+//        findPath(1, 1, 0);
+//        System.out.println(Arrays.deepToString(graph));
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int row = Integer.parseInt(br.readLine());
-        int col = Integer.parseInt(br.readLine());
+        String[] rowCol = br.readLine().split(" ");
+        int row = Integer.parseInt(rowCol[0]);
+        int col = Integer.parseInt(rowCol[1]);
 
         int[][] graph = new int[row + 1][col + 1];
+
+        for (int r = 1; r < row + 1; r++) {
+            String s = br.readLine();
+            for (int c = 0; c < col; c++) {
+                int val = Integer.parseInt(String.valueOf(s.charAt(c)));
+                graph[r][c + 1] = val;
+            }
+        }
+
+        System.out.println(Arrays.deepToString(graph));
+
+        findPath(1, 1, 0, graph);
+
+        System.out.println(Arrays.deepToString(graph));
     }
 
 }
