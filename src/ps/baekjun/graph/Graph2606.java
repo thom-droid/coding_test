@@ -25,6 +25,7 @@ public class Graph2606 {
             int node = Integer.parseInt(st.nextToken());
             int next = Integer.parseInt(st.nextToken());
             graph[node][next] = 1;
+            graph[next][node] = 1;
         }
 
         if (V == 1) {
@@ -41,6 +42,7 @@ public class Graph2606 {
 
         while (queue.size() != 0) {
             int vertex = queue.poll();
+            visited[vertex] = true;
             count++;
 
             for (int next = 1; next < graph[vertex].length; next++) {
