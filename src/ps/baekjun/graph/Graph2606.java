@@ -27,6 +27,11 @@ public class Graph2606 {
             graph[node][next] = 1;
         }
 
+        if (V == 1) {
+            System.out.println(0);
+            return;
+        }
+
         LinkedList<Integer> queue = new LinkedList<>();
 
         boolean[] visited = new boolean[V + 1];
@@ -36,17 +41,16 @@ public class Graph2606 {
 
         while (queue.size() != 0) {
             int vertex = queue.poll();
+            count++;
 
             for (int next = 1; next < graph[vertex].length; next++) {
                 if (graph[vertex][next] == 1 && !visited[next]) {
                     queue.push(next);
                     visited[next] = true;
-                    count++;
                 }
             }
         }
-        System.out.println(count);
+        System.out.println(count - 1);
     }
-
 
 }
