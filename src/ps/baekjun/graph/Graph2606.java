@@ -43,16 +43,16 @@ public class Graph2606 {
         while (queue.size() != 0) {
             int vertex = queue.poll();
             visited[vertex] = true;
-            count++;
 
             for (int next = 1; next < graph[vertex].length; next++) {
                 if (graph[vertex][next] == 1 && !visited[next]) {
                     queue.push(next);
                     visited[next] = true;
+                    count++;
                 }
             }
         }
-        System.out.println(count - 1);
+        System.out.println(count);
     }
 
 }
