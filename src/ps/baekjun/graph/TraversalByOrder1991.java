@@ -15,9 +15,9 @@ public class TraversalByOrder1991 {
             return;
         }
 
-        System.out.println(tree[node]);
-        traversePreorder(node * 2 + 1);
-        traversePreorder(node * 2 + 2);
+//        System.out.println(tree[node.value]);
+//        traversePreorder(node * 2 + 1);
+//        traversePreorder(node * 2 + 2);
     }
 
     public static void main(String[] args) throws IOException {
@@ -34,7 +34,7 @@ public class TraversalByOrder1991 {
 
 
 //        tree = new int[]{5, 3, 7, 2, 5, 2, 8};
-        traversePreorder(0);
+//        traversePreorder();
     }
 
     private static class Node {
