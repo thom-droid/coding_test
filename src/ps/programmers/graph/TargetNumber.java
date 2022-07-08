@@ -7,7 +7,7 @@ public class TargetNumber {
 
     //[4,1,2,1]
     public static int solution(int[] numbers, int target) {
-
+// TODO: two pointer?
         int answer = 0;
 
 
