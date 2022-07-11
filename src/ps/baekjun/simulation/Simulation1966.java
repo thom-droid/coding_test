@@ -4,42 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class Simulation1966 {
 
-    private static PriorityQueue<Integer> pq;
+    private static LinkedList<Integer> roundingQueue;
     private static int count;
-    private static boolean hasFound;
-    private static int currentOrder;
+    private static int maxValue;
+    private static int target;
 
-    private static void findOrder(int target) {
+    private static void findOrder() {
 
-//        for (int work : works) {
-//            pq.add(work);
-//        }
 
-        count = 0;
-        hasFound = false;
-        currentOrder = 1;
 
-        while (pq.size() != 0) {
-            if (hasFound && currentOrder - 1 != target) {
-                break;
-            }
 
-            pq.poll();
-
-            if (currentOrder - 1 == target) {
-                hasFound = true;
-            } else {
-                currentOrder++;
-            }
-
-            count++;
-        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -53,13 +34,16 @@ public class Simulation1966 {
         for (int i = 0; i < T; i++) {
             st = new StringTokenizer(br.readLine());
             int workLength = Integer.parseInt(st.nextToken());
-            int target = Integer.parseInt(st.nextToken());
+            int targetPosition = Integer.parseInt(st.nextToken());
 
-            pq = Arrays.stream(br.readLine().split(" "))
+            String[] works = br.readLine().split(" ");
+            target = Integer.parseInt(works[targetPosition]);
+            maxValue = Arrays.stream(works).mapToInt(Integer::parseInt).max().getAsInt();
+            roundingQueue = Arrays.stream(works)
                     .map(Integer::parseInt)
-                    .collect(Collectors.toCollection(PriorityQueue::new));
+                    .collect(Collectors.toCollection(LinkedList::new));
 
-            findOrder(target);
+            findOrder();
 
             sb.append(count).append('\n');
         }
