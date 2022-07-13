@@ -9,15 +9,13 @@ import java.util.stream.Collectors;
 public class Simulation1966 {
 
     private static LinkedList<int[]> roundingQueue;
-    private static LinkedList<Integer> linkedList;
+    private static LinkedList<Integer> maxValueQueue;
     private static int count;
     private static int maxValue;
-    private static int target;
 
     private static void findOrder() {
 
-        linkedList.sort(Collections.reverseOrder());
-
+        maxValueQueue.sort(Collections.reverseOrder());
         count = 0;
 
         while (roundingQueue.size() != 0) {
@@ -31,35 +29,24 @@ public class Simulation1966 {
             }
         }
 
-
     }
 
     private static void orderQueue() {
-        boolean isOrdered = false;
-        boolean hasFound = false;
 
-        maxValue = linkedList.poll();
+        maxValue = maxValueQueue.poll();
 
-        while (!isOrdered) {
+        int[] next = roundingQueue.peek();
 
-            int[] next = roundingQueue.peek();
+        while (next[0] != maxValue) {
 
             if (next[0] < maxValue) {
-
-                if (target == next[0] && !hasFound) {
-                    hasFound = true;
-                    next[1] = -1;
-                }
 
                 roundingQueue.poll();
                 roundingQueue.add(next);
 
-            } else {
-                isOrdered = true;
             }
 
-
-
+            next = roundingQueue.peek();
         }
     }
 
@@ -67,26 +54,28 @@ public class Simulation1966 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int T = Integer.parseInt(br.readLine());
-
         StringBuilder sb = new StringBuilder();
-
         StringTokenizer st;
+
         for (int i = 0; i < T; i++) {
             st = new StringTokenizer(br.readLine());
             int workLength = Integer.parseInt(st.nextToken());
             int targetPosition = Integer.parseInt(st.nextToken());
-
             String[] works = br.readLine().split(" ");
-            target = Integer.parseInt(works[targetPosition]);
 
-            roundingQueue = Arrays.stream(works)
-                    .map(Integer::parseInt)
-                    .map(integer -> {
-                        int[] arr = new int[2];
-                        arr[0] = integer;
-                        return arr;}).collect(Collectors.toCollection(LinkedList::new));
+            int[][] arr = new int[workLength][2];
 
-            linkedList = Arrays.stream(works)
+            for (int j = 0; j < arr.length; j++) {
+                arr[j][0] = Integer.parseInt(works[j]);
+
+                if (targetPosition == j) {
+                    arr[targetPosition][1] = -1;
+                }
+            }
+
+            roundingQueue = Arrays.stream(arr).collect(Collectors.toCollection(LinkedList::new));
+
+            maxValueQueue = Arrays.stream(works)
                     .map(Integer::parseInt)
                     .collect(Collectors.toCollection(LinkedList::new));
 
