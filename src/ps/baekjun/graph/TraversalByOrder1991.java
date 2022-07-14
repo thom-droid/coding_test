@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 public class TraversalByOrder1991 {
 
@@ -11,9 +14,6 @@ public class TraversalByOrder1991 {
     // parent - left - right
     private static void traversePreorder(Node node) {
 
-        if (node.value == null) {
-            return;
-        }
 
 //        System.out.println(tree[node.value]);
 //        traversePreorder(node * 2 + 1);
@@ -25,11 +25,15 @@ public class TraversalByOrder1991 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        ArrayList<Node> nodeArrayList = new ArrayList<>();
+        Map<String, Node> map = new HashMap<>();
 
+        StringTokenizer st;
         for (int i = 0; i < N; i++) {
-            String[] nodes = br.readLine().split(" ");
-
+            st = new StringTokenizer(br.readLine());
+            String value = st.nextToken();
+            String left = st.nextToken();
+            String right = st.nextToken();
+            map.put(value, new Node(left, right));
         }
 
 
@@ -38,12 +42,10 @@ public class TraversalByOrder1991 {
     }
 
     private static class Node {
-        String value;
-        Node left;
-        Node right;
+        String left;
+        String right;
 
-        public Node(String value, Node left, Node right) {
-            this.value = value;
+        public Node(String left, String right) {
             this.left = left;
             this.right = right;
         }
