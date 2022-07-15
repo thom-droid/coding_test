@@ -10,35 +10,66 @@ import java.util.StringTokenizer;
 
 public class TraversalByOrder1991 {
 
-    private static Node[] tree;
+    private static Map<String, Node> tree;
+    private static StringBuilder sb;
     // parent - left - right
-    private static void traversePreorder(Node node) {
+    private static void traversePreorder(String value) {
 
+        if (value.equals(".")) {
+            return;
+        }
 
-//        System.out.println(tree[node.value]);
-//        traversePreorder(node * 2 + 1);
-//        traversePreorder(node * 2 + 2);
+        sb.append(value);
+        traversePreorder(tree.get(value).left);
+        traversePreorder(tree.get(value).right);
+    }
+
+    private static void traverseInorder(String value) {
+
+        if (value.equals(".")) {
+            return;
+        }
+
+        traverseInorder(tree.get(value).left);
+        sb.append(value);
+        traverseInorder(tree.get(value).right);
+    }
+
+    private static void traversePostorder(String value) {
+
+        if (value.equals(".")) {
+            return;
+        }
+
+        traversePostorder(tree.get(value).left);
+        traversePostorder(tree.get(value).right);
+        sb.append(value);
     }
 
     public static void main(String[] args) throws IOException {
 
+        sb = new StringBuilder();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        Map<String, Node> map = new HashMap<>();
-
+        tree = new HashMap<>();
         StringTokenizer st;
+
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             String value = st.nextToken();
             String left = st.nextToken();
             String right = st.nextToken();
-            map.put(value, new Node(left, right));
+            tree.put(value, new Node(left, right));
         }
 
+        traversePreorder("A");
+        sb.append('\n');
+        traverseInorder("A");
+        sb.append('\n');
+        traversePostorder("A");
 
-//        tree = new int[]{5, 3, 7, 2, 5, 2, 8};
-//        traversePreorder();
+        System.out.println(sb);
     }
 
     private static class Node {
