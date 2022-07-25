@@ -10,12 +10,13 @@ public class Bruteforce14500 {
 
     static int N, M;
 
-    static int[] dx = {0, 0, -1, 1};
-    static int[] dy = {-1, 1, 0, 0};
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
     static boolean[][] visited;
     static int[][] map;
+    static int[][] board;
 
-    static int max = Integer.MAX_VALUE;
+    static int max = Integer.MIN_VALUE;
 
     public static void main(String[] args) throws IOException {
         //TODO backtracking(dfs), bruteforce
@@ -28,8 +29,8 @@ public class Bruteforce14500 {
         M = Integer.parseInt(st.nextToken());
 
         map = new int[N][M];
+        board = new int[N][M];
         visited = new boolean[N][M];
-
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -39,7 +40,17 @@ public class Bruteforce14500 {
             }
         }
 
-        System.out.println(Arrays.deepToString(map));
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                visited[i][j] = true;
+                board[i][j] = 1;
+                backtrack(i, j, 1, map[i][j]);
+                visited[i][j] = false;
+                board[i][j] = 0;
+            }
+        }
+
+        System.out.println(max);
     }
 
     private static void backtrack(int row, int col, int depth, int curSum) {
@@ -49,7 +60,6 @@ public class Bruteforce14500 {
             max = Math.max(max, curSum);
             return;
         }
-
 
         for (int k = 0; k < 4; k++) {
             // up, down, right, left
@@ -63,9 +73,21 @@ public class Bruteforce14500 {
 
             // backtracking
             if (!visited[curRow][curCol]) {
+
+                if (depth == 2) {
+                    visited[curRow][curCol] = true;
+                    board[curRow][curCol] = 1;
+                    backtrack(row, col, depth + 1, curSum + map[curRow][curCol]);
+                    visited[curRow][curCol] = false;
+                    board[curRow][curCol] = 0;
+
+                }
+
                 visited[curRow][curCol] = true;
+                board[curRow][curCol] = 1;
                 backtrack(curRow, curCol, depth + 1, curSum + map[curRow][curCol]);
                 visited[curRow][curCol] = false;
+                board[curRow][curCol] = 0;
             }
         }
     }
