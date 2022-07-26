@@ -35,7 +35,7 @@ public class Simulation1946 {
             }
 
             solve();
-            sb.append(T).append('\n');
+            sb.append(applicants).append('\n');
 
         }
 
@@ -46,29 +46,19 @@ public class Simulation1946 {
 
     private static void solve() {
 
-        // 서류 순위 내림차순 정렬
-        Arrays.sort(scores, (o1, o2) -> o2[0] - o1[0]);
+        // 서류 순위 오름차순 정렬
+        Arrays.sort(scores, Comparator.comparingInt(o -> o[0]));
 
-        // 면접 순위 정렬 값을 저장
-        LinkedList < Integer > queue = Arrays.stream(scores).map(scores -> scores[1]).collect(Collectors.toCollection(LinkedList::new));
+        // 서류 1위의 면접 순위
+        int interviewRank = scores[0][1];
 
-        // 면접 순위 중 최고 순위 출력 위한 큐
-        PriorityQueue<Integer> priorityQueue = Arrays.stream(scores).map(scores -> scores[1]).collect(Collectors.toCollection(PriorityQueue::new));
+        // 서류 1위 합격자의 면접 순위보다 낮으면 탈락, 높으면 합격
+        for (int i = 1; i < T; i++) {
 
-        while (queue.size() > 1) {
-
-            // 면접 순위 추출
-            int nextPoint = queue.poll();
-
-            // 해당 순위는 비교 대상이 되면 안되므로 우선순위 큐에서도 제거
-            priorityQueue.remove(nextPoint);
-
-            // 현재 큐 내의 최고 순위를 추출
-            int lowestPoint = priorityQueue.peek();
-
-            // 비교하여 면접 순위보다 높은 순위가 있는 경우 탈락
-            if(nextPoint > lowestPoint) {
-                T--;
+            if (interviewRank < scores[i][1]) {
+                applicants--;
+            } else {
+                interviewRank = scores[i][1];
             }
         }
 
