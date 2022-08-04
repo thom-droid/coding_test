@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 //silver 1
 public class Graph2667 {
@@ -22,7 +23,7 @@ public class Graph2667 {
         N = Integer.parseInt(br.readLine());
         graph = new int[N][N];
         visited = new boolean[N][N];
-        StringBuilder sb = new StringBuilder();
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
 
         for (int i = 0; i < N; i++) {
             String s = br.readLine();
@@ -36,20 +37,29 @@ public class Graph2667 {
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
+
                 int count = 0;
                 LinkedList<Node> queue = new LinkedList<>();
-                Node node = new Node(i, j);
-                queue.push(node);
-                count = bfs(queue, buildingNumber);
 
-                if (count > 0) {
-                    sb.append(count).append('\n');
-                    buildingNumber++;
+                if (graph[i][j] == 1 && !visited[i][j]) {
+                    Node node = new Node(i, j);
+                    queue.push(node);
+                    count = bfs(queue, buildingNumber);
+
+                    if (count > 0) {
+                        priorityQueue.add(count);
+                        buildingNumber++;
+                    }
                 }
+
             }
         }
 
         Arrays.stream(graph).forEach(x -> System.out.println(Arrays.toString(x)));
+        System.out.println(buildingNumber - 1);
+        while (priorityQueue.size() != 0) {
+            System.out.println(priorityQueue.poll());
+        }
     }
 
     private static int bfs(LinkedList<Node> queue, int buildingNumber) {
@@ -59,12 +69,9 @@ public class Graph2667 {
             Node next = queue.poll();
             int x = next.x;
             int y = next.y;
-
-            if (graph[x][y] == 1 && !visited[x][y]) {
-                visited[x][y] = true;
-                graph[x][y] = buildingNumber;
-                count++;
-            }
+            visited[x][y] = true;
+            graph[x][y] = buildingNumber;
+            count++;
 
             for (int i = 0; i < dx.length; i++) {
                 int xValue = x + dx[i];
@@ -78,18 +85,14 @@ public class Graph2667 {
                 if (graph[xValue][yValue] == 1 && !visited[xValue][yValue]) {
                     visited[xValue][yValue] = true;
                     queue.push(new Node(xValue, yValue));
-                    count++;
                 }
             }
         }
-
         return count;
     }
-
     private static class Node {
         int x;
         int y;
-
         public Node(int x, int y) {
             this.x = x;
             this.y = y;
