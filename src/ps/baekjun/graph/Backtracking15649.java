@@ -12,12 +12,12 @@ public class Backtracking15649 {
         String[] s = br.readLine().split(" ");
         N = Integer.parseInt(s[0]);
         M = Integer.parseInt(s[1]);
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb;
         boolean[] visited = new boolean[N];
         for (int i = 0; i < N; i++) {
             visited[i] = true;
             sb = new StringBuilder();
-            sb.append(i + 1);
+            sb.append(i + 1).append(" ");
             backtracking(1, visited, sb);
             visited[i] = false;
         }
@@ -28,15 +28,16 @@ public class Backtracking15649 {
     private static void backtracking(int level, boolean[] visited, StringBuilder sb) {
 
         if (level == M) {
+            System.out.println(sb);
             return ;
         }
 
         for (int j = 0; j < N; j++) {
             if (!visited[j]) {
                 visited[j] = true;
-                sb.append(j + 1);
+                sb.append(j + 1).append(" ");
                 backtracking(level + 1, visited, sb);
-                System.out.println(sb);
+                sb.deleteCharAt(sb.length() - 1);
                 sb.deleteCharAt(sb.length() - 1);
                 visited[j] = false;
             }
