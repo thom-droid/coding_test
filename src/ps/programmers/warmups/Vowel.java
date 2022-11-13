@@ -1,6 +1,5 @@
 package ps.programmers.warmups;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
 
 public class Vowel {
 

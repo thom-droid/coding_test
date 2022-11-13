@@ -3,7 +3,7 @@ package test;
 import org.junit.Test;
 import ps.programmers.warmups.Cipher;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 public class CipherTest {
 
