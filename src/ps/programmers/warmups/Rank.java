@@ -1,33 +1,28 @@
 package ps.programmers.warmups;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class Rank {
 
     public int[] solution(int[][] score) {
 
-        Integer[] averages = Arrays.stream(score).map(arr -> (arr[0] + arr[1]) / 2).sorted(Comparator.reverseOrder()).toArray(Integer[]::new);
+        int[] answer = new int[score.length];
 
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Double, Integer> map = new HashMap<>();
 
-        int[] answer = new int[averages.length];
+        Double[] averages = Arrays.stream(score).map(arr -> ((double) arr[0] + arr[1]) / 2).sorted(Comparator.reverseOrder()).toArray(Double[]::new);
 
-        int rank = 1;
-        int cur = 0;
-
-        for (Integer average : averages) {
-            if (average == cur) {
-                rank++;
-                continue;
-            }
-
-            cur = average;
-            map.put(average, rank++);
+        for (int i = 0; i < averages.length; i++) {
+            map.putIfAbsent(averages[i], i + 1);
         }
 
         for (int i = 0; i < score.length; i++) {
-            int val = map.get((score[i][0] + score[i][1]) / 2);
-            answer[i] = val;
+
+            int rank = map.get(((double) score[i][0] + score[i][1]) / 2);
+
+            answer[i] = rank;
         }
 
         return answer;
