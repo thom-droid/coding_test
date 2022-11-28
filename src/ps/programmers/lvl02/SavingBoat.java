@@ -71,4 +71,25 @@ public class SavingBoat {
         return answer;
     }
 
+    public int solution3(int[] people, int limit) {
+
+        Arrays.sort(people);
+
+        int answer = 0;
+        int j = 0;
+
+        for (int i = people.length - 1; i > j; i--) {
+
+            int weightLeft = limit - people[i];
+
+            if (people[j] <= weightLeft) {
+                j++;
+            }
+
+            answer++;
+        }
+
+        return answer;
+    }
+
 }
