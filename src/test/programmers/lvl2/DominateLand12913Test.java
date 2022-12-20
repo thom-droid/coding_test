@@ -1,7 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.DominateLand12913;
+import ps.programmers.lvl02.graph.DominateLand12913;
 
 import static org.junit.Assert.*;
 

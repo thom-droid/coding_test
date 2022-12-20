@@ -1,9 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.Dungeon87946;
-
-import static org.junit.Assert.*;
+import ps.programmers.lvl02.graph.Dungeon87946;
 
 public class Dungeon87946Test {
 

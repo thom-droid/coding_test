@@ -1,7 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.VowelDictionary84512;
+import ps.programmers.lvl02.graph.VowelDictionary84512;
 
 import static org.junit.Assert.*;
 

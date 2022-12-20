@@ -1,4 +1,4 @@
-package ps.programmers.lvl02;
+package ps.programmers.lvl02.graph;
 
 public class DominateLand12913 {
 

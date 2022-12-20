@@ -1,9 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.TargetNumber43165;
-
-import static org.junit.Assert.*;
+import ps.programmers.lvl02.graph.TargetNumber43165;
 
 public class TargetNumber43165Test {
 
