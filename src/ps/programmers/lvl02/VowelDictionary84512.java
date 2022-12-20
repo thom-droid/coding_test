@@ -79,5 +79,6 @@ public class VowelDictionary84512 {
         }
 
         return false;
+        
     }
 }
