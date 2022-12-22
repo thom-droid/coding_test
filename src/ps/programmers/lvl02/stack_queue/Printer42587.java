@@ -1,4 +1,4 @@
-package ps.programmers.lvl02;
+package ps.programmers.lvl02.stack_queue;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

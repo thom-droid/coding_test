@@ -1,7 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.Printer42587;
+import ps.programmers.lvl02.stack_queue.Printer42587;
 
 import static org.junit.Assert.*;
 

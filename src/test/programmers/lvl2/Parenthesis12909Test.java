@@ -1,7 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.Parenthesis12909;
+import ps.programmers.lvl02.stack_queue.Parenthesis12909;
 
 import static org.junit.Assert.*;
 

@@ -1,7 +1,7 @@
 package test.programmers.lvl2;
 
 import org.junit.Test;
-import ps.programmers.lvl02.Cache17680;
+import ps.programmers.lvl02.stack_queue.Cache17680;
 
 import static org.junit.Assert.*;
 
