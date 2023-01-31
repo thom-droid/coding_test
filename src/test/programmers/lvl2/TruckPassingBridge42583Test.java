@@ -10,16 +10,6 @@ public class TruckPassingBridge42583Test {
     TruckPassingBridge42583 truckPassingBridge42583 = new TruckPassingBridge42583();
 
     @Test
-    public void solution() {
-
-        int expected = 8;
-        int result = truckPassingBridge42583.solution3(2, 10, new int[]{7, 4, 5, 6});
-
-        int expected2 = 101;
-        int result2 = truckPassingBridge42583.solution3(100, 100, new int[]{10});
-    }
-
-    @Test
     public void solution4() {
         int expected = 8;
         int result = truckPassingBridge42583.solution4(2, 10, new int[]{7, 4, 5, 6});
