@@ -1,7 +1,5 @@
 package ps.programmers.lvl02;
 
-import org.testng.util.Strings;
-
 public class BitDifference77885 {
 
     public long[] solution2(long[] numbers) {
