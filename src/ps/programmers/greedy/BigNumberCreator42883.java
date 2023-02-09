@@ -46,6 +46,10 @@ public class BigNumberCreator42883 {
             }
         }
 
+        if (idx == 0 && start != 0) {
+            idx = start;
+        }
+
         return idx;
     }
 
