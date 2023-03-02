@@ -18,10 +18,10 @@ public class QueueTest {
     @Test
     public void enqueue() {
 
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        queue.enqueue(4);
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
 
         queue.print();
         Assertions.assertEquals(4, queue.size());
@@ -31,10 +31,10 @@ public class QueueTest {
     @Test
     public void dequeue() {
 
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        queue.enqueue(4);
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        queue.add(4);
 
         queue.print();
 
@@ -44,16 +44,4 @@ public class QueueTest {
 
     }
 
-    @Test
-    public void headAndTail() {
-
-        queue.enqueue(5);
-        queue.enqueue(10);
-        queue.enqueue(124);
-
-        Assertions.assertEquals(queue.head(), 5);
-        Assertions.assertEquals(queue.tail(), 124);
-
-
-    }
 }

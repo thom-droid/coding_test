@@ -3,7 +3,7 @@ package ds;
 import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
-public class Queue<T> {
+public class Stack<T> {
 
     static class Node<T> {
         T data;
@@ -15,57 +15,46 @@ public class Queue<T> {
     }
 
     int size;
-    Node<T> first;
-    Node<T> last;
+    Node<T> top;
 
-    public void add(T node) {
+    public void push(T node) {
         Node<T> newNode = new Node<>(node);
-
-        if (last != null) {
-            last.next = newNode;
-        }
-        last = newNode;
-
-        if (first == null) {
-            first = last;
-        }
-
+        newNode.next = top;
+        top = newNode;
         size++;
     }
 
-    public T remove() {
-
-        if (first == null) {
-            throw new NoSuchElementException();
+    public T pop() {
+        if (top == null) {
+            throw new EmptyStackException();
         }
 
-        T element = first.data;
-        first = first.next;
-
-        if (first == null) {
-            last = null;
-        }
-
+        T element = top.data;
+        top = top.next;
         size--;
 
         return element;
     }
 
     public T peek() {
-        return first.data;
-    }
+        if (this.isEmpty()) {
+            throw new EmptyStackException();
+        }
 
-    public int size() {
-        return this.size;
+        return top.data;
     }
 
     public boolean isEmpty() {
         return size == 0;
     }
 
+    public int size() {
+        return this.size;
+    }
+
     public void print() {
 
-        Node<T> node = first;
+        Node<T> node = top;
         while (node != null) {
             System.out.println(node.data);
             node = node.next;
@@ -75,8 +64,7 @@ public class Queue<T> {
     public void clear() {
 
         while(!this.isEmpty()){
-            this.remove();
+            this.pop();
         }
     }
-
 }
