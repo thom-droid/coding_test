@@ -1,4 +1,4 @@
-package ps.programmers.boostcamp.step1.greedy;
+package ps.programmers.boostcamp.step1;
 
 public class Station {
 

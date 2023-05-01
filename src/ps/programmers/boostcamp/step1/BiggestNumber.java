@@ -1,4 +1,4 @@
-package ps.programmers.boostcamp.step1.greedy;
+package ps.programmers.boostcamp.step1;
 
 import java.util.Arrays;
 import java.util.Comparator;
