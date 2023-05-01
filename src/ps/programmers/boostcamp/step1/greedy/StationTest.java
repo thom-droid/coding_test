@@ -1,4 +1,4 @@
-package ps.programmers.boostcamp.step1;
+package ps.programmers.boostcamp.step1.greedy;
 
 import org.junit.Test;
 
