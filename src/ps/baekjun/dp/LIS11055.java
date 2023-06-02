@@ -47,7 +47,8 @@ public class LIS11055 {
 
     private static int LIS(int n) {
 
-        if (dp[n] == -1) {
+        if (dp[n] == 0) {
+            dp[n] = num[n];
 
             for (int i = n - 1; i >= 0; i--) {
                 if (num[i] < num[n]) {
