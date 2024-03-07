@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Feb0306Test {
+class Mar0306Test {
 
-    Feb0306 feb0306 = new Feb0306();
+    Mar0306 mar0306 = new Mar0306();
 
     @Test
     void solution() {
@@ -16,7 +16,7 @@ class Feb0306Test {
                 "...#."
         };
         int[] expected = {0, 1, 3, 4};
-        int[] actual = feb0306.solution(wallpaper);
+        int[] actual = mar0306.solution(wallpaper);
         assertArrayEquals(expected, actual);
     }
 
@@ -30,7 +30,7 @@ class Feb0306Test {
                     "....#....."
             };
             int[] expected = {1, 3, 5, 8};
-            int[] actual = feb0306.solution(wallpaper);
+            int[] actual = mar0306.solution(wallpaper);
             assertArrayEquals(expected, actual);
     }
 
@@ -46,7 +46,7 @@ class Feb0306Test {
                 "....#...."
         };
         int[] expected = {0, 0, 7, 9};
-        int[] actual = feb0306.solution(wallpaper);
+        int[] actual = mar0306.solution(wallpaper);
         assertArrayEquals(expected, actual);
     }
 
@@ -57,7 +57,7 @@ class Feb0306Test {
                 "#."
         };
         int[] expected = {1, 0, 2, 1};
-        int[] actual = feb0306.solution(wallpaper);
+        int[] actual = mar0306.solution(wallpaper);
         assertArrayEquals(expected, actual);
     }
 }

@@ -2,7 +2,7 @@ package ps.programmers.lvl01.sort.heap;
 
 import java.util.PriorityQueue;
 
-public class Feb0306_01 {
+public class Mar0306_01 {
     public int[] solution(int k, int[] score) {
         PriorityQueue<Integer> heap = new PriorityQueue<>();
         int[] answer = new int[score.length];

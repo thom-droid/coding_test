@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Feb0306_01Test {
+class Mar0306_01Test {
 
-    Feb0306_01 test = new Feb0306_01();
+    Mar0306_01 test = new Mar0306_01();
 
     @Test
     void solution() {

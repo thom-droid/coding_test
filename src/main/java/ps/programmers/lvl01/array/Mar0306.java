@@ -1,6 +1,6 @@
 package ps.programmers.lvl01.array;
 
-public class Feb0306 {
+public class Mar0306 {
 
     public int[] solution(String[] wallpaper) {
         int lux = wallpaper.length - 1;
