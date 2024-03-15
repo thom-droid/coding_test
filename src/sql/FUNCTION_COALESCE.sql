@@ -1,0 +1,2 @@
+SELECT ROUND(SUM(COALESCE(f.length, 10)) / COUNT(f.id), 2) AS AVERAGE_LENGTH
+FROM fish_info f
