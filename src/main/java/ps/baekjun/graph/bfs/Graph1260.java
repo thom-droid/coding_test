@@ -1,4 +1,4 @@
-package ps.baekjun.graph;
+package ps.baekjun.graph.bfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
