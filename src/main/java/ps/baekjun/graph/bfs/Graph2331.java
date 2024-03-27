@@ -1,4 +1,4 @@
-package ps.baekjun.graph;
+package ps.baekjun.graph.bfs;
 
 public class Graph2331 {
 
