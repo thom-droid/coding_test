@@ -30,7 +30,8 @@ WITH RECURSIVE
                         e.salary
                  FROM employees3482 e
                  JOIN closure       cl
-                      ON e.manager_id = cl.descendant_id ),
+                      ON e.manager_id = cl.descendant_id )
+    select * from closure group by ANCESTOR_ID;
     agg AS ( SELECT ancestor_id  AS employee_id,
                     COUNT(*) - 1 AS team_size,
                     SUM(salary)  AS budget
@@ -44,4 +45,6 @@ SELECT a.EMPLOYEE_ID,
 JOIN h b ON a.employee_id = b.employee_id
 ORDER BY b.level,
          a.BUDGET DESC,
-         b.employee_name
+         b.employee_name;
+
+select * from employees3482;
