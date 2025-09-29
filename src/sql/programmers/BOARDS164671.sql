@@ -5,3 +5,5 @@ WHERE board_id = ( SELECT board_id
                    FROM used_goods_boards
                    ORDER BY views DESC
                    LIMIT 1 );
+
+-- join, first_value, rank 등으로도 구할 수 있음
