@@ -1,3 +1,4 @@
+-- 내 답변
 WITH RECURSIVE
     gen AS ( SELECT id, 1 AS generation
              FROM ecoli_data
@@ -20,6 +21,9 @@ WHERE p.id IS NULL
 GROUP BY generation
 ORDER BY generation;
 
+-- 다른 답변
+-- recursive 를 이용할 때 anchor 테이블을 기준으로 하면 left join을 사용할 수 있다.
+-- 나는 anchor 테이블을 eoli_data로 설정했기 때문에 계층을 표현하는 cte를 하나 더 만들어야 했다.
 WITH RECURSIVE PARENT AS (
     SELECT ID, PARENT_ID, 0 DEPTH
       FROM ECOLI_DATA
@@ -32,9 +36,9 @@ WITH RECURSIVE PARENT AS (
       LEFT OUTER JOIN ECOLI_DATA ED
         ON P.ID = ED.PARENT_ID
      WHERE P.ID IS NOT NULL
-)SELECT * FROM parent;
+)
 SELECT
-       COUNT(1) AS COUNT, DEPTH GENERATION
+       COUNT(*) AS COUNT, DEPTH GENERATION
   FROM PARENT
  WHERE ID IS NULL
  GROUP BY ID, DEPTH
